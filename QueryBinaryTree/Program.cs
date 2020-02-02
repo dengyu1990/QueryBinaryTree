@@ -43,6 +43,23 @@ namespace QueryBinaryTree
                     Console.WriteLine($"\t{emp.FirstName}{emp.LastName}");
                 }
             }
+
+            Console.WriteLine("--------------------------------------------");
+            Console.WriteLine("All employees");
+            var allEmployees = from e in empTree.ToList<Employee>() select e;  //加入将消除推迟求值
+            foreach (var emp in allEmployees)
+            {
+                Console.WriteLine(emp);
+            }
+
+            empTree.Insert(new Employee { Id = 5, FirstName = "Bill", LastName = "Gates", Department = "Microsoft" });
+
+            Console.WriteLine("All employees Two");
+            foreach (var emp in allEmployees)
+            {
+                Console.WriteLine(emp);
+            }
+
         }
 
         static void Main()
